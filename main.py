@@ -1,20 +1,49 @@
 
+import os
 
 #Classes for patient, staff, and appointments
 
 class Patient:
-     def __init__(self,patientID, FName, LName, SSN, birthday, 
-                 gender, contactName, contactPhone, medical_history, notes):
-        self.patientID = patientID
-        self.FName = FName
-        self.LName= LName
-        self.SSN = SSN
-        self.birthday = birthday
-        self.gender = gender
-        self.contactName = contactName
-        self.contactPhone = contactPhone
-        self.medical_history = medical_history
-        self.notes = notes
+     def __init__(self):
+        self.patientID = ""
+        self.FName = ""
+        self.LName= ""
+        self.SSN = ""
+        self.birthday = "" 
+        self.gender = ""
+        self.contactName = ""
+        self.contactPhone = ""
+        self.medical_history = ""
+        self.notes = ""
+
+     def getPatientID(self):
+          return self.patientID
+     
+     def setPatientID(self):
+          self.patientID = input("Enter Patient ID: ")
+            
+     def getFName(self):
+          return self.FName
+     
+     def setFname(self):
+          self.FName = input("Enter Patient first name: ")
+     
+     def getLName(self):
+          return self.LName
+     
+     def setFname(self):
+          self.LName = input("Enter Patient last name: ")
+
+     def getSSN(self):
+          return self.SSN
+     
+     def setSSN(self):
+          self.SSN = input("Enter patient's social security number:")
+     
+     def read(self, fileName):
+          text_file = open(self.getPatientID + '.txt', 'r')
+          text_file.readlines()
+
 
      #Function to add a patient to the list of patients
      def add_patient(patients):
@@ -28,8 +57,7 @@ class Patient:
           # with open(newPatient.name + '.txt', "w") as file:
           #      file.write(newPatient.name  newPatient.age)
           # pass
-
-
+     
 
 
 class Staff:
