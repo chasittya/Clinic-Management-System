@@ -1,4 +1,4 @@
-
+from os.path import exists
 
 #Classes for patient, staff, and appointments
 
@@ -55,7 +55,7 @@ class Patient:
           
           warning_message = input("Are you sure you want to delete this patient's file? (Y/N): ")
           if warning_message == 'y' or "Y":
-               self.remove(fileName)
+               self.remove(file_name)
                print("Patient file has been deleted.")
           else:
                print("Patient file has not been deleted.")
@@ -67,10 +67,24 @@ class Patient:
           for line in file_lines:
                 print (line)
 
+     def find(self, patientID):
+           return
+     
+     def update_PatientID(self):
+           self.patientID = self.setPatientID()
+
+     def updateFName(self):
+           self.FName = self.setFname()
+
+     def updateLName(self):
+           self.LName = self.LName()
+
 
 
      #Function to add a patient to the list of patients
-     def add_patient(patients):
+     def add_patient(self, patients):
+          
+
           newPatient = Patient()
           newPatient.name = input("Patient name: ")
           newPatient.age = input("Patient age: ")
