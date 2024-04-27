@@ -111,28 +111,101 @@ class Patient:
 
 class Staff:
      def __init__(self,sname,srole,scontact_info):
-        self.sname= sname
-        self.srole = srole
-        self.scontact_info = scontact_info
+       
+        self.staffID = ""
+        self.FName = ""
+        self.LName= ""
+        self.srole = ""
+        self.scontact_info = ""
+
+     def getStaffID(self):
+          return self.staffID
+     
+     def setStaffID(self):
+          self.staffID = input("Enter Staff ID: ")
+            
+     def getFName(self):
+          return self.FName
+     
+     def setFname(self):
+          self.FName = input("Enter Staff first name: ")
+     
+     def getLName(self):
+          return self.LName
+     
+     def setFname(self):
+          self.LName = input("Enter Staff last name: ")
+
+     def getSrole(self):
+          return self.srole
+     
+     def setSrole(self):
+          self.srole = input("Enter Staff Role: ")  
+
+     def getScontactInfo(self):
+          return self.scontact_info
+     
+     def setScontactInfo(self):
+          self.scontact_info = input("Enter Staff Contact Info: ")  
+
+     def read(self, file_name):
+          patient_file = open(self.getStaffID + '.txt', 'r')
+          patient_file.readlines()
+
+          # test
+          text_file.close()
+
+     def write(self, fileName):
+           return
+           
+     def deleteFile(self, file_name):
+          # look for file
+          
+          warning_message = input("Are you sure you want to delete this staff member's file? (Y/N): ")
+          if warning_message == 'y' or "Y":
+               self.remove(file_name)
+               print("Staff file has been deleted.")
+          else:
+               print("Staff file has not been deleted.")
+     
+     def printFile (self, file_name):
+          attributes = ["Staff ID"]
+          staff_file = open(file_name, 'r')
+          file_lines = staff_file.readlines()
+          for line in file_lines:
+                print (line)
+
+     def find(self, StaffID):
+           return
+     
+     def update_StaffID(self):
+           self.staffID = self.setStaffID()
+
+     def updateFName(self):
+           self.FName = self.setFname()
+
+     def updateLName(self):
+           self.LName = self.LName()
 
      #Function to add a staff member to the list of staff
      def add_staff(staff):
           newStaff = Staff()
-          newStaff.name = input("Staff Name: ")
-          newStaff.age = input("Staff Age: ")
-          newStaff.gender = input("Staff Gender: ")
-          newStaff.contact_info = input("Staff Contact Info: ")
+          newStaff.FName = input ("Staff First Name: ")
+          newStaff.LName = input ("Staff Last Name: ")
+          newStaff.srole = input("Staff Role: ")
+          newStaff.scontact_info = input("Staff Contact Info: ")
           pass 
 
 class Appointment:
      def __init__(self,patient,doctor,appointment_datetime):
-          self.patient = patient
-          self.doctor = doctor
+          self.patientID = patient_id
+          self.doctor = ""
           self.appointment_datetime = appointment_datetime
      
      #Function to schedule a new appointment
      def schedule_appointment(appointments,patients,staff):
           patient_id = input("Enter patient ID: ")
+          
           appointment_datetime = input("Enter appointment date and time (YYYY-MM-DD) (Hours:Minutes)AM/PM: ")
           
 
