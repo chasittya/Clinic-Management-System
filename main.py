@@ -40,10 +40,32 @@ class Patient:
      def setSSN(self):
           self.SSN = input("Enter patient's social security number:")
      
-     def read(self, fileName):
-          text_file = open(self.getPatientID + '.txt', 'r')
-          text_file.readlines()
+     def read(self, file_name):
+          patient_file = open(self.getPatientID + '.txt', 'r')
+          patient_file.readlines()
+
           # test
+          text_file.close()
+
+     def write(self, fileName):
+           return
+           
+     def deleteFile(self, file_name):
+          # look for file
+          
+          warning_message = input("Are you sure you want to delete this patient's file? (Y/N): ")
+          if warning_message == 'y' or "Y":
+               self.remove(fileName)
+               print("Patient file has been deleted.")
+          else:
+               print("Patient file has not been deleted.")
+     
+     def printFile (self, file_name):
+          attributes = ["Patient ID"]
+          patient_file = open(file_name, 'r')
+          file_lines = patient_file.readlines()
+          for line in file_lines:
+                print (line)
 
 
      #Function to add a patient to the list of patients
@@ -56,7 +78,7 @@ class Patient:
           newPatient.medical_history = input("Patient medical history: ")
 
           # with open(newPatient.name + '.txt', "w") as file:
-          #      file.write(newPatient.name  newPatient.age)
+          #      self.write(newPatient.name  newPatient.age)
           # pass
      
 
