@@ -38,16 +38,24 @@ class Patient:
           return self.SSN
      
      def setSSN(self):
-          self.SSN = input("Enter patient's social security number:")
-     
+          self.SSN = input("Enter patient's social security number (XXX-XX-XXXX):")
+
+     def setBirthday(self):
+          self.birthday = input("Please enter patient's birthday (YYYYMMDD): ")
+           
+
+     def setGender(self):
+           self.gender = input("Please enter the gender of the patient: ")
+
      def read(self, file_name):
           patient_file = open(self.getPatientID + '.txt', 'r')
           patient_file.readlines()
 
           # test
-          text_file.close()
+          patient_file.close()
 
-     def write(self, fileName):
+     def write(self,):
+           with open (file_name)
            return
            
      def deleteFile(self, file_name):
@@ -61,7 +69,7 @@ class Patient:
                print("Patient file has not been deleted.")
      
      def printFile (self, file_name):
-          attributes = ["Patient ID"]
+          attributes = ["Patient ID: ", "First Name: ", "Last Name: ", "Social Security Number: ", "Birthday (YYYY-MM-DD): ", "Gender: " ]
           patient_file = open(file_name, 'r')
           file_lines = patient_file.readlines()
           for line in file_lines:
@@ -72,13 +80,15 @@ class Patient:
      
      def update_PatientID(self):
            self.patientID = self.setPatientID()
+           self.write()                 #update patient file
 
      def updateFName(self):
            self.FName = self.setFname()
+           self.write()                 #update patient file
 
      def updateLName(self):
            self.LName = self.LName()
-
+           self.write()                 #update patient file
 
 
      #Function to add a patient to the list of patients
