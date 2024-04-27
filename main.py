@@ -1,9 +1,9 @@
 
-import os
 
 #Classes for patient, staff, and appointments
 
 class Patient:
+
      def __init__(self):
         self.patientID = ""
         self.FName = ""
@@ -68,6 +68,7 @@ class Patient:
                 print (line)
 
 
+
      #Function to add a patient to the list of patients
      def add_patient(patients):
           newPatient = Patient()
@@ -80,7 +81,8 @@ class Patient:
           # with open(newPatient.name + '.txt', "w") as file:
           #      self.write(newPatient.name  newPatient.age)
           # pass
-     
+
+
 
 
 class Staff:
@@ -91,7 +93,7 @@ class Staff:
 
      #Function to add a staff member to the list of staff
      def add_staff(staff):
-          newStaff = staff()
+          newStaff = Staff()
           newStaff.name = input("Staff Name: ")
           newStaff.age = input("Staff Age: ")
           newStaff.gender = input("Staff Gender: ")
@@ -106,6 +108,20 @@ class Appointment:
      
      #Function to schedule a new appointment
      def schedule_appointment(appointments,patients,staff):
+          patient_id = input("Enter patient ID: ")
+          appointment_datetime = input("Enter appointment date and time (YYYY-MM-DD) (Hours:Minutes)AM/PM: ")
+          
+
+          appointment = 
+          {
+               "patient_id": patient_id,
+               "datetime": appointment_datetime,
+               
+          }
+
+          appointment.append(appointment)
+
+          print("Appointment scheduled successfully")
           pass
 
 
