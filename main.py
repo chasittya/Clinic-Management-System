@@ -3,7 +3,7 @@
 #Classes for patient, staff, and appointments
 
 class Patient:
-    def __init__(self,patientID, FName, LName, SSN, birthday, 
+     def __init__(self,patientID, FName, LName, SSN, birthday, 
                  gender, contactName, contactPhone, medical_history, notes):
         self.patientID = patientID
         self.FName = FName
@@ -16,6 +16,21 @@ class Patient:
         self.medical_history = medical_history
         self.notes = notes
 
+     #Function to add a patient to the list of patients
+     def add_patient(patients):
+          newPatient = Patient()
+          newPatient.name = input("Patient name: ")
+          newPatient.age = input("Patient age: ")
+          newPatient.gender = input("Patient gender (M/F): ")
+          newPatient.contact_info = input("Patient contact information: ")
+          newPatient.medical_history = input("Patient medical history: ")
+
+          # with open(newPatient.name + '.txt', "w") as file:
+          #      file.write(newPatient.name  newPatient.age)
+          # pass
+
+
+
 
 class Staff:
      def __init__(self,sname,srole,scontact_info):
@@ -23,32 +38,25 @@ class Staff:
         self.srole = srole
         self.scontact_info = scontact_info
 
+     #Function to add a staff member to the list of staff
+     def add_staff(staff):
+          pass
+
 class Appointment:
      def __init__(self,patient,doctor,appointment_datetime):
           self.patient = patient
           self.doctor = doctor
           self.appointment_datetime = appointment_datetime
+     
+     #Function to schedule a new appointment
+     def schedule_appointment(appointments,patients,staff):
+          pass
 
-#Function to add a patient to the list of patients
-def add_patient(patients):
-     newPatient = Patient()
-     newPatient.name = input("Patient name: ")
-     newPatient.age = input("Patient age: ")
-     newPatient.gender = input("Patient gender (M/F): ")
-     newPatient.contact_info = input("Patient contact information: ")
-     newPatient.medical_history = input("Patient medical history: ")
 
-     # with open(newPatient.name + '.txt', "w") as file:
-     #      file.write(newPatient.name  newPatient.age)
-     # pass
 
-#Function to add a staff member to the list of staff
-def add_staff(staff):
-     pass
 
-#Function to schedule a new appointment
-def schedule_appointment(appointments,patients,staff):
-     pass
+
+
 
 def main():
      patients = []
