@@ -40,7 +40,7 @@ class Staff:
 
      #Function to add a staff member to the list of staff
      def add_staff(staff):
-          newStaff = staff()
+          newStaff = Staff()
           newStaff.name = input("Staff Name: ")
           newStaff.age = input("Staff Age: ")
           newStaff.gender = input("Staff Gender: ")
