@@ -3,16 +3,22 @@
 #Classes for patient, staff, and appointments
 
 class Patient:
-    def __init__(self,name,age,gender, contact_info,medical_history):
-        self.name= name 
-        self.age = age
+    def __init__(self,patientID, FName, LName, SSN, birthday, 
+                 gender, contactName, contactPhone, medical_history, notes):
+        self.patientID = patientID
+        self.FName = FName
+        self.LName= LName
+        self.SSN = SSN
+        self.birthday = birthday
         self.gender = gender
-        self.contact_info = contact_info
+        self.contactName = contactName
+        self.contactPhone = contactPhone
         self.medical_history = medical_history
+        self.notes = notes
 
 
 class Staff:
-        def __init__(self,sname,srole,scontact_info):
+     def __init__(self,sname,srole,scontact_info):
         self.sname= sname
         self.srole = srole
         self.scontact_info = scontact_info
@@ -25,7 +31,16 @@ class Appointment:
 
 #Function to add a patient to the list of patients
 def add_patient(patients):
-     pass
+     newPatient = Patient()
+     newPatient.name = input("Patient name: ")
+     newPatient.age = input("Patient age: ")
+     newPatient.gender = input("Patient gender (M/F): ")
+     newPatient.contact_info = input("Patient contact information: ")
+     newPatient.medical_history = input("Patient medical history: ")
+
+     # with open(newPatient.name + '.txt', "w") as file:
+     #      file.write(newPatient.name  newPatient.age)
+     # pass
 
 #Function to add a staff member to the list of staff
 def add_staff(staff):
