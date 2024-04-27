@@ -40,7 +40,12 @@ class Staff:
 
      #Function to add a staff member to the list of staff
      def add_staff(staff):
-          pass
+          newStaff = staff()
+          newStaff.name = input("Staff Name: ")
+          newStaff.age = input("Staff Age: ")
+          newStaff.gender = input("Staff Gender: ")
+          newStaff.contact_info = input("Staff Contact Info: ")
+          pass 
 
 class Appointment:
      def __init__(self,patient,doctor,appointment_datetime):
