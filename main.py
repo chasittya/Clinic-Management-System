@@ -43,6 +43,7 @@ class Patient:
      def read(self, fileName):
           text_file = open(self.getPatientID + '.txt', 'r')
           text_file.readlines()
+          # test
 
 
      #Function to add a patient to the list of patients
