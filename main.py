@@ -232,25 +232,25 @@ def main():
      staff = []
      appointments = []
 
-#Main Menu
-while True:
-     print("Main Menu")
-     print("1. Add Patient")
-     print("2.Add Staff")
-     print("3. Schedule Appointment")
-     print("4.Exit")
-     choice = input("Enter your selection ")
+     #Main Menu
+     while True:
+          print("Main Menu")
+          print("1. Add Patient")
+          print("2.Add Staff")
+          print("3. Schedule Appointment")
+          print("4.Exit")
+          choice = input("Enter your selection ")
 
-if choice == '1':
-          add_patient(patients)
-elif choice == '2':
-            add_staff(staff)
-elif choice =='3':
-            schedule_appointment(appointments,patients,staff)
-elif choice == '4':
-            print("Exiting program...")
-else:
-            print("Invalid selection. Try Again.")
+     if choice == '1':
+               add_patient(patients)
+     elif choice == '2':
+               add_staff(staff)
+     elif choice =='3':
+               schedule_appointment(appointments,patients,staff)
+     elif choice == '4':
+               print("Exiting program...")
+     else:
+               print("Invalid selection. Try Again.")
 
-if __name__ == " __main__":
-       main()
+     if __name__ == " __main__":
+          main()
