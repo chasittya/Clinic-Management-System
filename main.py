@@ -208,6 +208,130 @@ class Appointment:
           pass
 
 
+class appointmentReminderClass:
+    patientName =""
+    appointmentDate =""
+    appointmentTime =""
+    choice = 0
+
+    @staticmethod
+    def displayReminder():          # Display appointment reminder
+        print(appointmentReminderClass.patientName)
+        print(appointmentReminderClass.appointmentDate)
+        print(appointmentReminderClass.appointmentTime)
+
+    @staticmethod 
+    def displayOptions():           # Display options
+        print("Display options here")
+
+    @staticmethod
+    def getUserChoice():            # Get usere choice
+        return appointmentReminderClass.choice
+    
+    @staticmethod
+    def displayConfirmation():      # Display appointment confirmation
+        print(appointmentReminderClass.patientName)
+        print(appointmentReminderClass.appointmentDate)
+        print(appointmentReminderClass.appointmentTime)
+
+    @staticmethod
+    def displayCancellation():      # Display appointment Cancellation
+        print("Appointment cancellation confirmed!")
+
+    @staticmethod
+    def displayRescheduling():      # Display updated schedule
+        print("Rescheduling...")
+        print(appointmentReminderClass.patientName)
+        print(appointmentReminderClass.appointmentDate)
+        print(appointmentReminderClass.appointmentTime)
+        print("Date Confirmed!")
+
+    @staticmethod
+    def confirmAppointment():       # Confirm appointment
+        print(appointmentReminderClass.patientName)
+        print(appointmentReminderClass.appointmentDate)
+        print(appointmentReminderClass.appointmentTime)
+
+    @staticmethod
+    def cancelAppointment():        # Cancel appointment
+        print("Canceling appointment for...")
+        print(appointmentReminderClass.patientName)
+        print(appointmentReminderClass.appointmentDate)
+        print(appointmentReminderClass.appointmentTime)
+
+
+class adminClass:
+
+    def __init(self):                   # initialize attributes. Private Function
+        self.adminID =""
+        self.firstName =""
+        self.lastName =""
+
+# Public methods to access private functions 
+
+    def getAdminID(self):               # return admin ID
+        return self.adminID
+    
+    def setAdminID(self, ID):           # set admin
+        self.adminID = ID
+        return self.adminID
+    
+    def getFirstName(self):             # return first name
+        return self.firstName
+    
+    def getLastName(self):              # returns last name
+        return self.lastName
+    
+    def setFirstName(self, fname):      # sets first name
+        self.firstName = fname
+        return self.firstName
+    
+    def setLastName(self, lname):       # sets last name 
+        self.lastName = lname
+        return self.lastName
+    
+# Public Methods
+
+    def read(self, file_name):                          # Reads in a flie
+        with open(file_name, 'r') as file:
+            self.adminID = file.readline().strip()
+            self.firstName = file.readline().strip()
+            self.lastName = file.readline().strip()
+
+    def write(self, file_name):                         # Writes on to a file
+        with open(file_name, 'w') as file:              
+            file.write(self.adminID + "\n")
+            file.write(self.firstName + "\n")
+            file.write(self.lastName + "\n")
+
+    def deleteFile(self, file_name):                    # Delete file
+        import os
+        os.remove(file_name)
+
+    def printFile(self, file_name):                     # prints 
+        with open(file_name, 'r') as file:
+            for line in file:
+                print(line.strip())
+
+    def printAll(self):                                 # Displays AdminID, First name, and Last name
+        print("AdminID:", self.adminID)
+        print("firstName:", self.firstName)
+        print("lastName:", self.lastName)
+
+    def updateAdminID(self):                            # updates an Admins ID info
+        print("Current Admin ID:", self.adminID)
+        user = input("Enter new Admin ID: ")
+        self.setFirstName(user)
+
+    def updateFirstName(self):                          # updates Admins first name
+        print("Current Last Name:", self.lastName)
+        user = input("Enter new Last Name: ")
+        self.setFirstName(user)
+
+    def updateLastName(self):                           # updates Admins last name
+        print("Current Last Name:", self.lastName)
+        user = input("Enter new Last Name: ")
+        self.setLastName(user)
 
 
 
