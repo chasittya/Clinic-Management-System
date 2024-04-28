@@ -1,4 +1,6 @@
+import os
 from os.path import exists
+
 
 #Classes for patient, staff, and appointments
 
@@ -54,8 +56,8 @@ class Patient:
           # look for file
           
           warning_message = input("Are you sure you want to delete this patient's file? (Y/N): ")
-          if warning_message == 'y' or "Y":
-               self.remove(file_name)
+          if warning_message.upper() == 'Y':
+               os.remove(file_name)
                print("Patient file has been deleted.")
           else:
                print("Patient file has not been deleted.")
@@ -153,7 +155,6 @@ class Staff:
     def deleteFile(self, file_name):
         warning_message = input("Are you sure you want to delete this staff member's file? (Y/N): ")
         if warning_message.upper() == 'Y':
-            import os
             os.remove(file_name)
             print("Staff file has been deleted.")
         else:
@@ -305,7 +306,6 @@ class adminClass:
             file.write(self.lastName + "\n")
 
     def deleteFile(self, file_name):                    # Delete file
-        import os
         os.remove(file_name)
 
     def printFile(self, file_name):                     # prints 
@@ -342,25 +342,25 @@ def main():
      staff = []
      appointments = []
 
-#Main Menu
-while True:
-     print("Main Menu")
-     print("1. Add Patient")
-     print("2.Add Staff")
-     print("3. Schedule Appointment")
-     print("4.Exit")
-     choice = input("Enter your selection ")
+     #Main Menu
+     while True:
+         print("Main Menu")
+         print("1. Add Patient")
+         print("2.Add Staff")
+         print("3. Schedule Appointment")
+         print("4.Exit")
+         choice = input("Enter your selection ")
 
-if choice == '1':
-          add_patient(patients)
-elif choice == '2':
-            add_staff(staff)
-elif choice =='3':
-            schedule_appointment(appointments,patients,staff)
-elif choice == '4':
-            print("Exiting program...")
-else:
-            print("Invalid selection. Try Again.")
+         if choice == '1':
+                 add_patient(patients)
+         elif choice == '2':
+                     add_staff(staff)
+         elif choice =='3':
+                     schedule_appointment(appointments,patients,staff)
+         elif choice == '4':
+                     print("Exiting program...")
+         else:
+                     print("Invalid selection. Try Again.")
 
-if __name__ == " __main__":
-       main()
+     if __name__ == " __main__":
+         main()
