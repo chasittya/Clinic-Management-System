@@ -45,7 +45,7 @@ class Patient:
           patient_file.readlines()
 
           # test
-          text_file.close()
+          patient_file.close()
 
      def write(self, fileName):
            return
