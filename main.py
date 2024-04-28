@@ -1,7 +1,6 @@
 import os
 from os.path import exists
 
-
 #Classes for patient, staff, and appointments
 
 class Patient:
@@ -41,9 +40,33 @@ class Patient:
      
      def setSSN(self):
           self.SSN = input("Enter patient's social security number:")
+
+     def getBirthday(self):
+         return self.birthday
      
+     def setBirthday(self):
+          self.birthday = input("Enter patient's date of birthday (YYYYMMDD):")
+
+     def getGender(self):
+          return self.gender
+     
+     def setGender(self):
+          self.gender = input("Enter patient's gender (M/F): ") 
+
+     def getContactName(self):
+          return self.contactName
+     
+     def setContactName(self):
+          self.contactName = input("Enter patient's emergency contact's name: ")
+
+     def getContactPhone(self):
+          return self.contactPhone
+     
+     def setContactPhone(self):
+          self.contactPhone = input("Enter patient's contact's phone number [(XXX) XXX-XXXX]: ")
+
      def read(self, file_name):
-          patient_file = open(self.getPatientID + '.txt', 'r')
+          patient_file = open(file_name, 'r')
           patient_file.readlines()
 
           # test
@@ -56,8 +79,8 @@ class Patient:
           # look for file
           
           warning_message = input("Are you sure you want to delete this patient's file? (Y/N): ")
-          if warning_message.upper() == 'Y':
-               os.remove(file_name)
+          if warning_message == 'y' or "Y":
+               self.remove(file_name)
                print("Patient file has been deleted.")
           else:
                print("Patient file has not been deleted.")
@@ -88,15 +111,15 @@ class Patient:
           
 
           newPatient = Patient()
-          newPatient.name = input("Patient name: ")
+          newPatient.setFName
+          newPatient.setLName
           newPatient.age = input("Patient age: ")
           newPatient.gender = input("Patient gender (M/F): ")
           newPatient.contact_info = input("Patient contact information: ")
           newPatient.medical_history = input("Patient medical history: ")
 
-          # with open(newPatient.name + '.txt', "w") as file:
-          #      self.write(newPatient.name  newPatient.age)
-          # pass
+        # 
+
 
 
 
@@ -175,13 +198,13 @@ class Staff:
 
 
      #Function to add a staff member to the list of staff
-     def add_staff(staff):
-          newStaff = Staff()
-          newStaff.FName = input ("Staff First Name: ")
-          newStaff.LName = input ("Staff Last Name: ")
-          newStaff.srole = input("Staff Role: ")
-          newStaff.scontact_info = input("Staff Contact Info: ")
-          pass 
+    def add_staff(staff):
+        newStaff = Staff()
+        newStaff.FName = input ("Staff First Name: ")
+        newStaff.LName = input ("Staff Last Name: ")
+        newStaff.srole = input("Staff Role: ")
+        newStaff.scontact_info = input("Staff Contact Info: ")
+        pass 
 
 class Appointment:
      def __init__(self,patient,doctor,appointment_datetime):
@@ -209,7 +232,7 @@ class Appointment:
           pass
 
 
-class appointmentReminderClass:
+class appointmentReminder:
     patientName =""
     appointmentDate =""
     appointmentTime =""
@@ -217,9 +240,9 @@ class appointmentReminderClass:
 
     @staticmethod
     def displayReminder():          # Display appointment reminder
-        print(appointmentReminderClass.patientName)
-        print(appointmentReminderClass.appointmentDate)
-        print(appointmentReminderClass.appointmentTime)
+        print(appointmentReminder.patientName)
+        print(appointmentReminder.appointmentDate)
+        print(appointmentReminder.appointmentTime)
 
     @staticmethod 
     def displayOptions():           # Display options
@@ -227,13 +250,13 @@ class appointmentReminderClass:
 
     @staticmethod
     def getUserChoice():            # Get usere choice
-        return appointmentReminderClass.choice
+        return appointmentReminder.choice
     
     @staticmethod
     def displayConfirmation():      # Display appointment confirmation
-        print(appointmentReminderClass.patientName)
-        print(appointmentReminderClass.appointmentDate)
-        print(appointmentReminderClass.appointmentTime)
+        print(appointmentReminder.patientName)
+        print(appointmentReminder.appointmentDate)
+        print(appointmentReminder.appointmentTime)
 
     @staticmethod
     def displayCancellation():      # Display appointment Cancellation
@@ -242,26 +265,26 @@ class appointmentReminderClass:
     @staticmethod
     def displayRescheduling():      # Display updated schedule
         print("Rescheduling...")
-        print(appointmentReminderClass.patientName)
-        print(appointmentReminderClass.appointmentDate)
-        print(appointmentReminderClass.appointmentTime)
+        print(appointmentReminder.patientName)
+        print(appointmentReminder.appointmentDate)
+        print(appointmentReminder.appointmentTime)
         print("Date Confirmed!")
 
     @staticmethod
     def confirmAppointment():       # Confirm appointment
-        print(appointmentReminderClass.patientName)
-        print(appointmentReminderClass.appointmentDate)
-        print(appointmentReminderClass.appointmentTime)
+        print(appointmentReminder.patientName)
+        print(appointmentReminder.appointmentDate)
+        print(appointmentReminder.appointmentTime)
 
     @staticmethod
     def cancelAppointment():        # Cancel appointment
         print("Canceling appointment for...")
-        print(appointmentReminderClass.patientName)
-        print(appointmentReminderClass.appointmentDate)
-        print(appointmentReminderClass.appointmentTime)
+        print(appointmentReminder.patientName)
+        print(appointmentReminder.appointmentDate)
+        print(appointmentReminder.appointmentTime)
 
 
-class adminClass:
+class admin:
 
     def __init(self):                   # initialize attributes. Private Function
         self.adminID =""
@@ -342,7 +365,7 @@ def main():
      staff = []
      appointments = []
 
-     #Main Menu
+    #Main Menu
      while True:
          print("Main Menu")
          print("1. Add Patient")
@@ -362,5 +385,5 @@ def main():
          else:
                      print("Invalid selection. Try Again.")
 
-     if __name__ == " __main__":
-         main()
+if __name__ == " __main__":
+       main()
