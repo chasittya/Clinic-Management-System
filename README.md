@@ -1,6 +1,10 @@
 CS 3321- Clinic Management Software
-
-
+Team Members:
+Chasitty Ayala
+Joseph Kang 
+Ty Mcghee 
+Marcio Amaral 
+Edson Cano
 
 References:
 https://getbootstrap.com
