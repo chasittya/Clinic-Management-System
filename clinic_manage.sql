@@ -11,10 +11,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `email` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
-  `role` VARCHAR(50) NOT NULL, -- This field indicates the role of the user (e.g., patient, staff)
+  `role` VARCHAR(10) NOT NULL DEFAULT 'patient', 
   `created_at` DATETIME NULL DEFAULT NOW(),
   `updated_at` DATETIME NULL DEFAULT NOW() ON UPDATE NOW()
 ) ENGINE = InnoDB;
+
 
 -- Table `patients`
 CREATE TABLE IF NOT EXISTS `patients` (
@@ -22,15 +23,17 @@ CREATE TABLE IF NOT EXISTS `patients` (
   `userID` INT,
   `FName` VARCHAR(255),
   `LName` VARCHAR(255),
+  `role`  VARCHAR(50),
   `SSN` VARCHAR(255),
   `birthday` DATE,
   `gender` CHAR(1),
-  `contactName` VARCHAR(255),
   `contactPhone` VARCHAR(255),
   `medicalHistory` TEXT,
   `notes` TEXT,
   FOREIGN KEY (`userID`) REFERENCES `users`(`id`)
 ) ENGINE=InnoDB;
+
+
 
 -- Table `staff`
 CREATE TABLE IF NOT EXISTS `staff` (
@@ -38,7 +41,16 @@ CREATE TABLE IF NOT EXISTS `staff` (
   `userID` INT,
   `FName` VARCHAR(255),
   `LName` VARCHAR(255),
-  `srole` VARCHAR(255),
+  `scontact_info` VARCHAR(255),
+  FOREIGN KEY (`userID`) REFERENCES `users`(`id`)
+) ENGINE=InnoDB;
+
+-- Table `admin`
+CREATE TABLE IF NOT EXISTS `admin` (
+  `adminID` INT AUTO_INCREMENT PRIMARY KEY,
+  `userID` INT,
+  `FName` VARCHAR(255),
+  `LName` VARCHAR(255),
   `scontact_info` VARCHAR(255),
   FOREIGN KEY (`userID`) REFERENCES `users`(`id`)
 ) ENGINE=InnoDB;
@@ -47,8 +59,9 @@ CREATE TABLE IF NOT EXISTS `staff` (
 CREATE TABLE IF NOT EXISTS `appointments` (
   `appointmentID` INT AUTO_INCREMENT PRIMARY KEY,
   `patientID` INT,
-  `doctor` VARCHAR(255),
+  `staffID` INT,
   `appointment_datetime` DATETIME,
+  FOREIGN KEY (`staffID`) REFERENCES `staff` (`patientID`),
   FOREIGN KEY (`patientID`) REFERENCES `patients`(`patientID`)
 ) ENGINE=InnoDB;
 
