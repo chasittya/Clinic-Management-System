@@ -1,3 +1,5 @@
+
+<!-- Patients can view and edit personal information --> 
 <html lang="en"> 
  <head>
      <meta charset="UTF-8">
@@ -21,7 +23,7 @@
 
  
      
- <!--Top divider-->
+<!--Top divider-->
  <div class="container py-3">
    <header>
      <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
@@ -45,6 +47,37 @@
      </div>
  <!--End of top divider-->
  <h1 class="d-grid gap-2 d-sm-flex justify-content-sm-center">Update Your Profile</h1><div style="margin-bottom: 50px;"></div> 
-    </body>
+  <div class="container">
+    <form method="POST" action="/profile">
+      <div class="form-group">
+        <label>Name:</label>
+        {{ patient_info.FName }} {{ patient_info.LName }}
+    </div>
+    <div class="form-group">
+      <label for="gender">Gender:</label>
+      <select class="form-control" id="gender" name="gender">
+          <option value="Female">Female</option>
+          <option value="Male">Male</option>
+      </select>
+  </div>
+      <div class="form-group">
+        <label for="birthday">Birthday:</label>
+        <input type="text" class="form-control" id="birthday" name="birthday" value="{{ patient_info.birthday }}" required>
+    </div>
+        <div class="form-group">
+            <label for="contactPhone">Contact Phone:</label>
+            <input type="text" class="form-control" id="contactPhone" name="contactPhone" value="{{ patient_info.contactPhone }}" required>
+        </div>
+        <div class="form-group">
+            <label for="medicalHistory">Medical History:</label>
+            <textarea class="form-control" id="medicalHistory" name="medicalHistory" rows="5">{{ patient_info.medicalHistory }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="notes">Notes:</label>
+            <textarea class="form-control" id="notes" name="notes" rows="5">{{ patient_info.notes }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Profile</button>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </html>
  
