@@ -13,7 +13,7 @@
 <div class= "d-flex justify-content-around p-sm-5 mb-3">
     <div class="register">
     <h3>Register</h3>
-    <form action="/dashboard" method="post">
+    <form action="/register" method="post">
         <div class="mb-3 col-sm">
             <label for="fName" class="form-label">First Name:</label>
             <input type="text" class="form-control" id="fname" name="form_first_name">
@@ -37,7 +37,19 @@
         <div class="button">
             <button type="submit" class="btn btn-primary">Register </button>
         </div>
+        <a href="/login" class="link-danger d-flex justify-content-center">Already have an account? </a>
+
     </div>
     </form>
-
 </div>
+
+<!-- Display error messages-->
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+</body>
+</html>
