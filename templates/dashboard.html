@@ -1,1 +1,151 @@
-<h1 class="h3 mb-3 fw-normal">Clinic Management Sign in</h1>
+<!--Patient's dashboard-->
+<html lang="en"> 
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+     <link href="/static/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+     <link href="/static/css/signin.css" rel="stylesheet">
+     <title>Dashboard</title>
+ </head>
+
+ <!doctype html>
+ <html lang="en" data-bs-theme="auto">
+  <head>
+  <title>Clinic Management System</title>
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <body>
+
+ 
+     
+ <!--Top divider-->
+ <div class="container py-3">
+   <header>
+     <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+       <div class="fs-2 mb-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-capsule-pill" viewBox="0 0 16 16">
+          <path d="M11.02 5.364a3 3 0 0 0-4.242-4.243L1.121 6.778a3 3 0 1 0 4.243 4.243l5.657-5.657Zm-6.413-.657 2.878-2.879a2 2 0 1 1 2.829 2.829L7.435 7.536zM12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8m-.5 1.042a3 3 0 0 0 0 5.917zm1 5.917a3 3 0 0 0 0-5.917z"></path>
+        </svg>
+        Clinic Management
+       </div>
+ 
+       <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="/profile">Profile</a>
+         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="/history">Documents</a>
+         <a class="py-2 link-body-emphasis text-decoration-none" href="/contactUs">Contact Us  </a>  <div style="margin-left: 10px;"></div> 
+         <form class="d-flex me-3" role="logout" action="/logout" method="POST">
+          <button class="btn btn-outline-danger" type="submit">Logout</button>
+        </form>
+       </nav>
+     </div>
+ <!--End of top divider-->
+     <div class="clinic-header p-3 pb-md-4 mx-auto text-center">
+       <h1 class="display-4 fw-normal text-body-emphasis">{{welcome_message}}</h1>
+
+       <p class="fs-5 text-body-secondary">At Clinic Management System we strive on helping you manage your health the best way possible!</p>
+     </div>
+   </header>
+ 
+   <main>
+     <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+       <div class="col">
+         <div class="card mb-4 rounded-3 shadow-sm">
+           <div class="card-header py-3">
+             <h4 class="my-0 fw-normal">Manage My Information</h4>
+           </div>
+           <div class="card-body">
+            <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-person-fill-gear" viewBox="0 0 16 16">
+              <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4m9.886-3.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382zM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0"/>
+            </svg>
+            <h6 style="margin-top: 20px;">Update your profile</h6>
+            <form class="d-flex me-3" role="logout" action="/profile" method="GET">
+              <button class="btn w-100 btn btn-lg btn-outline-primary" type="submit">Update My Info</button>
+            </form>
+           </div>
+         </div>
+       </div>
+       <div class="col">
+         <div class="card mb-4 rounded-3 shadow-sm">
+           <div class="card-header py-3">
+             <h4 class="my-0 fw-normal">Important Documents</h4>
+           </div>
+           <div class="card-body">
+            <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
+              <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+              <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+            </svg>
+            <h6 style="margin-top: 20px;">View your history and documents</h6>
+            <form class="d-flex me-3" role="logout" action="/history" method="GET">
+              <button class="btn w-100 btn btn-lg btn-outline-primary" type="submit">View My History</button>
+            </form>
+           </div>
+         </div>
+       </div>
+       <div class="col">
+         <div class="card mb-4 rounded-3 shadow-sm border-primary">
+           <div class="card-header py-3 text-bg-primary border-primary">
+             <h4 class="my-0 fw-normal">Schedule An Appointment</h4>
+           </div>
+           <div class="card-body">
+            <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
+              <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
+              <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+            </svg>
+            <h6 style="margin-top: 20px;">Schedule a visit with your primary care team today!</h6>
+             <button type="button" class="w-100 btn btn-lg btn-primary">Get Started</button>
+           </div>
+         </div>
+       </div>
+     </div>
+ 
+ 
+   </main>
+ 
+   <footer class="pt-4 my-md-5 pt-md-5 border-top">
+     <div class="row">
+       <div class="col-12 col-md">
+         <small class="d-block mb-3 text-body-secondary">&copy; April 28 2024</small>
+       </div>
+       <div class="col-6 col-md">
+         <h5>Features</h5>
+         <ul class="list-unstyled text-small">
+           <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
+           <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
+           <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
+           <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
+           <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
+           <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
+         </ul>
+       </div>
+       <div class="col-6 col-md">
+         <h5>References</h5>
+         <ul class="list-unstyled text-small">
+           <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
+           <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
+           <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
+           <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+         </ul>
+       </div>
+       <div class="col-6 col-md">
+         <h5>About</h5>
+         <ul class="list-unstyled text-small">
+           <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
+           <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
+           <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
+           <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+         </ul>
+       </div>
+     </div>
+   </footer>
+ </div>
+ <script src="/static/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+ 
+     </body>
+ </html>
+    </div>
+  </div>
+</nav>
