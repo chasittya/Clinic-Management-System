@@ -1,3 +1,4 @@
+<!--Where patients,staff,and adminstrators can register an account-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,6 +35,14 @@
             <label for="confirm_password" class="form-label">Confirm Password</label>
             <input type="text" class="form-control" id="confirm_password" name="form_confirm_password">
         </div>
+        <div class="mb-3 col-sm">
+            <label for="role" class="form-label">Role:</label>
+            <select class="form-select" id="role" name="form_role">
+                <option value="patient">Patient</option>
+                <option value="admin">Administrator</option>
+                <option value="staff">Staff</option>
+            </select>
+        </div>
         <div class="button">
             <button type="submit" class="btn btn-primary">Register </button>
         </div>
@@ -53,3 +62,4 @@
 {% endwith %}
 </body>
 </html>
+
