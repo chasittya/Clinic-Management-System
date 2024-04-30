@@ -38,33 +38,40 @@ def login():
         mysql = connectToMySQL('clinic_manage')
         query = "SELECT * FROM users WHERE email = %(form_email)s"
         data = {'form_email': request.form['form_email']}
-        user = mysql.query_db(query, data)
+        users = mysql.query_db(query, data)
 
         # Validate password
-    if len(user) > 0 and bcrypt.check_password_hash(user[0]['password'], request.form['form_password']):
+    if len(users) > 0 and bcrypt.check_password_hash(users[0]['password'], request.form['form_password']):
      print("User authenticated successfully")
     # Fetch the user's ID based on their role
     user_id = None
-    if user[0]['role'] == 'patient':
+    if users[0]['role'] == 'patient':
         mysql = connectToMySQL('clinic_manage')
-        query = "SELECT patientID FROM patients WHERE userID = %(user_id)s"
-        data = {'user_id': user[0]['id']}
-        result = mysql.query_db(query, data)
+        query = "SELECT userID FROM patients WHERE userID = %(user_id)s"
+        data = {'user_id': users[0]['id']}
+        
+        patients = mysql.query_db(query, data)
 
-        if result:
-            user_id = result[0]['userID']
-            print(f"Patient ID: {user_id}")
+        print ("Query Result:", patients)
+        
+
+        if patients:
+            user_id = patients[0]['userID']
+            print(f"User ID: {user_id}")
     else:
-        user_id = user[0]['id']
+        user_id = users[0]['id']
         print(f"User ID: {user_id}")
 
     # Set the session variable with the correct user ID
+        
     if user_id:
         session['user_id'] = user_id
         return redirect('/dashboard')
     else:
         flash("Invalid email or password!")
         return redirect('/login')
+
+
 
         
 #profile
@@ -199,7 +206,7 @@ def register():
                     # Set user_id session variable
                     session['user_id'] = new_user_id
                     #flash('We have reached checkpoint 3')
-                    #flash('Patient registration successful')
+                    flash('Patient registration successful')
 
 
             # Redirect based on user's role
@@ -227,6 +234,7 @@ def dashboard():
     query = "SELECT FName FROM patients WHERE userID= %(user_id)s"
     data={'user_id': user_id}
     user = mysql.query_db(query,data)
+    print(data)
     
     if user:
         user_FName = user[0]['FName']
