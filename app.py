@@ -41,12 +41,33 @@ def login():
         user = mysql.query_db(query, data)
 
         # Validate password
-        if len(user) > 0 and bcrypt.check_password_hash(user[0]['password'], request.form['form_password']):
-            session['user_id'] = user[0]['id']
-            return redirect('/dashboard')
-        else:
-            flash("Invalid email or password!")
-            return redirect('/login')
+    if len(user) > 0 and bcrypt.check_password_hash(user[0]['password'], request.form['form_password']):
+     print("User authenticated successfully")
+    # Fetch the user's ID based on their role
+    user_id = None
+    if user[0]['role'] == 'patient':
+        mysql = connectToMySQL('clinic_manage')
+        query = "SELECT patientID FROM patients WHERE userID = %(user_id)s"
+        data = {'user_id': user[0]['id']}
+        result = mysql.query_db(query, data)
+        if result:
+            user_id = result[0]['userID']
+            print(f"Patient ID: {user_id}")
+    else:
+        user_id = user[0]['id']
+        print(f"User ID: {user_id}")
+
+    # Set the session variable with the correct user ID
+    if user_id:
+        session['user_id'] = user_id
+        return redirect('/dashboard')
+    else:
+        flash("Invalid email or password!")
+        return redirect('/login')
+
+# If the user login fails, flash an error message and redirect to the login page
+    flash("Invalid email or password!")
+    return redirect('/login')
         
 #profile
 @app.route('/profile', methods=['GET', 'POST'])
@@ -102,11 +123,11 @@ def register():
             flash("Invalid role")
             return redirect('/register')
         
-        if len(request.form['form_first_name']) < 2:
+        if len(request.form['form_FName']) < 2:
             flash('First Name is required')
             is_valid = False
         
-        if len(request.form['form_last_name']) < 2:
+        if len(request.form['form_LName']) < 2:
             flash('Last Name is required')
             is_valid = False
 
@@ -135,42 +156,40 @@ def register():
         else:
             pw_hash = bcrypt.generate_password_hash(request.form['form_password'])
             mysql = connectToMySQL('clinic_manage')
-            query = "INSERT INTO users (first_name, last_name, email, password, role) VALUES (%(f_name)s, %(l_name)s, %(email)s, %(hashed_pw)s, %(role)s);"
+            query = "INSERT INTO users (FName, LName, email, password, role) VALUES (%(f_name)s, %(l_name)s, %(email)s, %(hashed_pw)s, %(role)s);"
             data={
-                'f_name': request.form['form_first_name'],
-                'l_name': request.form['form_last_name'],
+                'f_name': request.form['form_FName'],
+                'l_name': request.form['form_LName'],
                 'email': request.form['form_email'],
                 'hashed_pw': pw_hash,
                 'role': role
             }
 
-            # Based on the user's role, insert their information into the respective table
+            # Insert user into users table
             new_user_id = mysql.query_db(query, data)
 
             if new_user_id: 
-                new_user_id = new_user_id  
+            # If user is a patient, insert into patients table with userID
+                if role == 'patient':
+                    insert_query = "INSERT INTO patients (userID, FName, LName) VALUES (%s, %s, %s);"
+                    patient_data = (new_user_id, request.form['form_FName'], request.form['form_LName'])
+                    mysql = connectToMySQL('clinic_manage')
+                    mysql.query_db(insert_query, patient_data)
 
-                if role == 'patient':
-                    query = "INSERT INTO patients (userID, FName, LName) VALUES (%(user_id)s, %(f_name)s, %(l_name)s);"
-                elif role == 'staff':
-                    query = "INSERT INTO staff (userID, FName, LName) VALUES (%(user_id)s, %(f_name)s, %(l_name)s);"
-                elif role == 'admin':
-                    query = "INSERT INTO admin (userID, FName, LName) VALUES (%(user_id)s, %(f_name)s, %(l_name)s);"
-                    session['user_id'] = new_user_id
-                    flash('Registration successful')
-                
-                mysql.query_db(query, {'user_id': new_user_id, 'f_name': request.form['form_first_name'], 'l_name': request.form['form_last_name']})
-                
-                if role == 'patient':
-                    return redirect('/dashboard')
-                elif role == 'staff':
-                    return redirect('/staff_dashboard')
-                elif role == 'admin':
-                    return redirect('/admin_dashboard')
+            # Set user_id session variable
+            session['user_id'] = new_user_id
+            flash('Registration successful')
+
+            # Redirect based on user's role
+            if role == 'patient':
+                return redirect('/dashboard')
+            elif role == 'staff':
+                return redirect('/staff_dashboard')
+            elif role == 'admin':
+                return redirect('/admin_dashboard')
             else:
                 flash("Failed to register user")
                 return redirect('/register')
-    
 #dashboard route
 @app.route('/dashboard')
 def dashboard():
@@ -181,13 +200,13 @@ def dashboard():
     user_id = session['user_id']
     #Get login info
     mysql = connectToMySQL('clinic_manage')
-    query = "SELECT first_name FROM users WHERE id = %(user_id)s"
+    query = "SELECT FName FROM patients WHERE userID= %(user_id)s"
     data={'user_id': user_id}
     user = mysql.query_db(query,data)
     
     if user:
-        user_first_name = user[0]['first_name']
-        welcome_message = f"Hello, {user_first_name}!"
+        user_FName = user[0]['FName']
+        welcome_message = f"Hello, {user_FName}!"
         return render_template('dashboard.html', welcome_message=welcome_message)
     else:
         flash('User not found')
