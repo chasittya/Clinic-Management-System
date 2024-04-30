@@ -1,0 +1,65 @@
+<!--Where patients,staff,and adminstrators can register an account-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Registration</title>
+</head>
+
+<body>
+<div class= "d-flex justify-content-around p-sm-5 mb-3">
+    <div class="register">
+    <h3>Register</h3>
+    <form action="/register" method="POST">
+        <div class="mb-3 col-sm">
+            <label for="fName" class="form-label">First Name:</label>
+            <input type="text" class="form-control" id="fname" name="form_FName">
+        </div>
+        <div class="mb-3 col-sm">
+            <label for="lName" class="form-label">Last Name:</label>
+            <input type="text" class="form-control" id="lname" name="form_LName">
+        </div>
+        <div class="mb-3 col-sm">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" id="email" name="form_email">
+        </div>
+        <div class="mb-3 col-sm">
+            <label for="password" class="form-label">Enter Password</label>
+            <input type="text" class="form-control" id="password" name="form_password">
+        </div>
+        <div class="mb-3 col-sm">
+            <label for="confirm_password" class="form-label">Confirm Password</label>
+            <input type="text" class="form-control" id="confirm_password" name="form_confirm_password">
+        </div>
+        <div class="mb-3 col-sm">
+            <label for="role" class="form-label">Role:</label>
+            <select class="form-select" id="role" name="form_role">
+                <option value="patient">Patient</option>
+                <option value="admin">Administrator</option>
+                <option value="staff">Staff</option>
+            </select>
+        </div>
+        <div class="button">
+            <button type="submit" class="btn btn-primary">Register </button>
+        </div>
+        <a href="/login" class="link-danger d-flex justify-content-center">Already have an account? </a>
+
+    </div>
+    </form>
+</div>
+
+<!-- Display error messages-->
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+</body>
+</html>
+
