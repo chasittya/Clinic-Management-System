@@ -1,4 +1,5 @@
 CS 3321- Clinic Management Software
+
 Team Members:
 Chasitty Ayala
 Joseph Kang 
@@ -8,9 +9,11 @@ Edson Cano
 
 
 Open terminal 
-python -m venv env   (for virtual environment)
+python -m venv env   (to activate virtual environment)
 python app.py 
-http://127.0.0.1:5000/dashboard
+http://127.0.0.1:5000/login 
+CTRL + C to end virtual environment 
+
 
 References:
 https://getbootstrap.com
