@@ -8,6 +8,9 @@ Marcio Amaral
 Edson Cano
 
 
+Created a Clinic Management Software System that included Flask, Bootstrap, MySQL database. 
+
+
 Open terminal 
 python -m venv env   (to activate virtual environment)
 python app.py 
